@@ -8,8 +8,12 @@ class HttpResponse {
 public:
     HttpResponse(int status_code, std::string reason_phrase, std::string body = "");
 
+    static HttpResponse json(int status_code, std::string reason_phrase, std::string body);
+
     void set_header(const std::string& name, const std::string& value);
     void set_body(std::string body);
+    int status_code() const;
+    std::string reason_phrase() const;
     std::string to_string() const;
 
 private:

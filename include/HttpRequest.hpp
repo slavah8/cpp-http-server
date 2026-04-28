@@ -9,6 +9,7 @@ struct HttpRequest {
     std::string path;
     std::string version;
     std::unordered_map<std::string, std::string> headers;
+    std::string body;
     bool valid;
 
     static HttpRequest parse(const std::string& request_text);

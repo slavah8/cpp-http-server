@@ -1,3 +1,29 @@
+# Build outputs
 build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Binaries and generated artifacts
+cpp_http_server
+cpp_http_server_tests
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Test output
+build/test_public_mime/
+
+# Editor and OS files
 .DS_Store
 .vscode/
+.idea/
+*.swp
+*.swo

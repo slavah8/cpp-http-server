@@ -20,7 +20,7 @@ std::string trim(const std::string& text) {
 }
 
 HttpRequest HttpRequest::parse(const std::string& request_text) {
-    HttpRequest request{"", "", "", {}, false};
+    HttpRequest request{"", "", "", {}, "", false};
 
     std::istringstream request_stream(request_text);
     std::string request_line;
@@ -69,6 +69,13 @@ HttpRequest HttpRequest::parse(const std::string& request_text) {
         }
 
         request.headers[header_name] = header_value;
+    }
+
+    const std::string header_terminator = "\r\n\r\n";
+    const std::size_t body_start = request_text.find(header_terminator);
+
+    if (body_start != std::string::npos) {
+        request.body = request_text.substr(body_start + header_terminator.size());
     }
 
     return request;
